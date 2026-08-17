@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM-аналитика сделок</title>
+  <link rel="icon" href="/_gw/icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">◆</span>
+        <div class="brand-text">
+          <strong>CRM · Сделки</strong>
+          <span>Аналитика воронки</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item active" data-view="overview">
+          <span class="ni-ico">◈</span> Обзор
+        </a>
+        <a class="nav-item" data-view="pipeline">
+          <span class="ni-ico">▤</span> Воронка
+        </a>
+        <a class="nav-item" data-view="deals">
+          <span class="ni-ico">☰</span> Сделки
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div id="portal-status" class="portal-status">
+          <span class="dot"></span> Проверка подключения…
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Обзор воронки</h1>
+          <p id="page-subtitle" class="subtitle">Сделки CRM портала</p>
+        </div>
+
+        <div class="filters">
+          <label class="f-label" for="period">Период создания</label>
+          <select id="period" class="select">
+            <option value="30">за 30 дней</option>
+            <option value="90" selected>за 90 дней</option>
+            <option value="180">за 180 дней</option>
+            <option value="365">за 1 год</option>
+            <option value="all">за всё время</option>
+          </select>
+          <div class="custom-range">
+            <input type="date" id="from" class="date" />
+            <span class="to-sep">—</span>
+            <input type="date" id="to" class="date" />
+          </div>
+          <button id="apply" class="btn">Применить</button>
+        </div>
+      </header>
+
+      <div id="not-connected" class="not-connected hidden">
+        <div class="nc-card">
+          <div class="nc-ico">🔌</div>
+          <h2>Портал не подключён</h2>
+          <p id="placement-guidance" class="hidden">
+            Откройте дашборд из левого меню Bitrix24, чтобы приложение получило сессию портала.
+          </p>
+          <p id="local-setup-guidance" class="hidden">
+            Локальная разработка не настроена: настройте учётные данные сервера и запустите приложение из тестовой placement-сессии.
+          </p>
+        </div>
+      </div>
+
+      <div id="content" class="content">
+        <!-- рендер по вкладкам -->
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
